@@ -21,5 +21,6 @@ function getHumanChoice() {
 
 // Generates rock/paper/scissors randomly.
 function getComputerChoice() {
-
+    choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() * 3)];
 }
