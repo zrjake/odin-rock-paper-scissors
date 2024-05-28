@@ -16,7 +16,7 @@ function playRound(humanChoice, computerChoice) {
 
 // Prompts user for a choice, returning lowercase input.
 function getHumanChoice() {
-
+    return prompt("Rock, paper, or scissors?").toLowerCase();
 }
 
 // Generates rock/paper/scissors randomly.
