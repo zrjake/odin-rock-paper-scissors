@@ -14,15 +14,17 @@ function playGame() {
         //               H is scissors, C is paper
         // Everything that isn't a tie or one of these
         // is a victory for C.
+        // (This also means computer wins when human gives
+        // bad input, which seems fair to me.)
         if (humanChoice == computerChoice) {
-            console.log("It's a tie! No points awarded.");
+            console.log(`Tie! We both did ${humanChoice}.`);
         } else if ((humanChoice == "rock" && computerChoice == "scissors")
                 || (humanChoice == "paper" && computerChoice == "rock")
                 || (humanChoice == "scissors" && computerChoice == "paper")) {
-            console.log("You win! +1 point");
+            console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
             humanScore++;
         } else {
-            console.log("I win!");
+            console.log(`I win! ${computerChoice} beats ${humanChoice}.`);
             computerScore++;
         }
     }
