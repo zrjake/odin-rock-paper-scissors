@@ -17,37 +17,53 @@ function playGame() {
         // (This also means computer wins when human gives
         // bad input, which seems fair to me.)
         if (humanChoice == computerChoice) {
-            console.log(`Tie! We both did ${humanChoice}.`);
+            outcomeP.textContent = `Tie! We both did ${humanChoice}.`;
         } else if ((humanChoice == "rock" && computerChoice == "scissors")
                 || (humanChoice == "paper" && computerChoice == "rock")
                 || (humanChoice == "scissors" && computerChoice == "paper")) {
-            console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+            outcomeP.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
             humanScore++;
+            showHumanScore();
         } else {
-            console.log(`I win! ${computerChoice} beats ${humanChoice}.`);
+            outcomeP.textContent = `I win! ${computerChoice} beats ${humanChoice}.`;
             computerScore++;
+            showComputerScore();
         }
+
+        if (humanScore >= 5) {
+            outcomeP.textContent = "Congrats! You win!";
+            outcomeP = null;
+        }
+        if (computerScore >= 5) {
+            outcomeP.textContent = "Sorry, but I won.";
+            outcomeP = null;
+        }
+    }
+
+    function showHumanScore() {
+        humanScoreP.textContent = "Your score: " + humanScore;
+    }
+    function showComputerScore() {
+        computerScoreP.textContent = "My score: " + computerScore;
     }
 
     let humanScore = 0;
     let computerScore = 0;
 
+    let humanScoreP = document.querySelector(".results .human");
+    let computerScoreP = document.querySelector(".results .computer");
+    showHumanScore();
+    showComputerScore();
+
+    let outcomeP = document.querySelector(".results .outcome");
+
     gameButtons = document.querySelector(".game-buttons");
     gameButtons.addEventListener("click", (event) => {
         let humanChoice = event.target.id;
         let computerChoice = getComputerChoice();
-        console.log(humanChoice + " " + computerChoice);
+        outcomeP.textContent = humanChoice + " " + computerChoice;
         playRound(humanChoice, computerChoice);
     });
-
-    console.log(`Final score: ${humanScore} for you, ${computerScore} for me.`);
-    if (humanScore > computerScore) {
-        console.log("You win!");
-    } else if (computerScore > humanScore) {
-        console.log("I win!");
-    } else {
-        console.log("It's a tie!");
-    }
 } 
 
 // Prompts user for a choice, returning lowercase input.
