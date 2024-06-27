@@ -56,6 +56,7 @@ function playGame() {
     showComputerScore();
 
     let outcomeP = document.querySelector(".results .outcome");
+    outcomeP.textContent = "New game! Select rock, paper, or scissors to begin!"
 
     gameButtons = document.querySelector(".game-buttons");
     gameButtons.addEventListener("click", (event) => {
@@ -66,13 +67,11 @@ function playGame() {
     });
 } 
 
-// Prompts user for a choice, returning lowercase input.
-function getHumanChoice() {
-    return prompt("Rock, paper, or scissors?").toLowerCase();
-}
-
 // Generates rock/paper/scissors randomly.
 function getComputerChoice() {
     choices = ["rock", "paper", "scissors"];
     return choices[Math.floor(Math.random() * 3)];
 }
+
+const startButton = document.querySelector("#start-button");
+startButton.addEventListener("click", playGame);
