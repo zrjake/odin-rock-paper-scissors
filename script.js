@@ -21,11 +21,11 @@ function playGame() {
         } else if ((humanChoice == "rock" && computerChoice == "scissors")
                 || (humanChoice == "paper" && computerChoice == "rock")
                 || (humanChoice == "scissors" && computerChoice == "paper")) {
-            outcomeP.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
+            outcomeP.textContent = `You win! ${humanChoice[0].toUpperCase() + humanChoice.substr(1)} beats ${computerChoice}.`;
             humanScore++;
             showHumanScore();
         } else {
-            outcomeP.textContent = `I win! ${computerChoice} beats ${humanChoice}.`;
+            outcomeP.textContent = `I win! ${computerChoice[0].toUpperCase() + computerChoice.substr(1)} beats ${humanChoice}.`;
             computerScore++;
             showComputerScore();
         }
