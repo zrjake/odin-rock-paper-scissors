@@ -29,14 +29,16 @@ function playGame() {
         }
     }
 
-    // Run five rounds of the game.
     let humanScore = 0;
     let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let humanChoice = getHumanChoice();
+
+    gameButtons = document.querySelector(".game-buttons");
+    gameButtons.addEventListener("click", (event) => {
+        let humanChoice = event.target.id;
         let computerChoice = getComputerChoice();
+        console.log(humanChoice + " " + computerChoice);
         playRound(humanChoice, computerChoice);
-    }
+    });
 
     console.log(`Final score: ${humanScore} for you, ${computerScore} for me.`);
     if (humanScore > computerScore) {
